@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  dvc:
+    container_name: dvc_5aua0
+    build:
+      dockerfile: Dockerfile
+      context: ./
+      args:
+        USER_PW: ${USER_PW} 
+        USER_ID: ${USER_ID} 
+        PORT: ${PORT} 
+        UBUNTU_VERSION: ${UBUNTU_VERSION}
+    volumes:
+      - dvc-vol:/data
+    ports:
+      - "${PORT}:22"
+volumes:
+  dvc-vol:
+    driver: local
